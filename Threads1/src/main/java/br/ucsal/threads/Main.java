@@ -3,7 +3,8 @@ package br.ucsal.threads;
 public class Main {
 
 	public static void main(String[] args) {
-		SharedObject o = new SharedObject(); 
+		Pilha pilha = new Pilha(26);
+		SharedObject o = new SharedObject(pilha); 
 		String[] names = {"C1", "C2", "P1", "P2"}; 
 		Thread[] threads = { new Thread(new Consumer(o)), 
 		                     new Thread(new Consumer(o)), 

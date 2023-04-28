@@ -10,11 +10,14 @@ public class Producer implements Runnable {
 	 }
 	 @Override 
 	 public void run() { 
-	  for (int i = 0; i < TENTATIVAS; i++) { 
-	   if( !shared.set(new Random().nextInt(1000))) //tenta produzir
-	    break; // termina o thread se retornar false
-	  } 
-	  System.out.println(Thread.currentThread().getName()+"Producer DONE.");
-	 } 
+		 for (int i = 0; i < TENTATIVAS; i++) {
 
+			 Random random = new Random();
+			 char letra = (char) ('a' + random.nextInt(26));
+
+			 if (!shared.set(letra)) // tenta produzir
+		            break; // termina o thread se retornar false
+		    }
+		    System.out.println(Thread.currentThread().getName() + " Producer DONE.");
+	 } 
 }
